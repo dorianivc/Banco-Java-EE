@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-abr-2020 21:52:02 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Cajero" table="Cajero" catalog="Banco" optimistic-lock="version">
+        <id name="idCajero" type="int">
+            <column name="idCajero" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="entidades.Usuario" fetch="select">
+            <column name="Usuario_cedula" length="15" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

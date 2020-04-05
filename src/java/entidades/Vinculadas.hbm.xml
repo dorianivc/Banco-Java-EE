@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-abr-2020 21:52:02 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Vinculadas" table="Vinculadas" catalog="Banco" optimistic-lock="version">
+        <id name="vinId" type="string">
+            <column name="vin_id" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="entidades.Cliente" fetch="select">
+            <column name="Cliente_idCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cuenta" class="entidades.Cuenta" fetch="select">
+            <column name="Num_Cuenta_vinculada" length="20" not-null="true" />
+        </many-to-one>
+        <property name="owner" type="byte">
+            <column name="owner" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

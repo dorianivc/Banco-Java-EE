@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-abr-2020 21:52:02 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Movimiento" table="Movimiento" catalog="Banco" optimistic-lock="version">
+        <id name="movId" type="java.lang.Integer">
+            <column name="mov_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cuenta" class="entidades.Cuenta" fetch="select">
+            <column name="numero_cuenta" length="20" not-null="true" />
+        </many-to-one>
+        <property name="monto" type="float">
+            <column name="Monto" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="movFecha" type="timestamp">
+            <column name="mov_fecha" length="19" />
+        </property>
+        <property name="detalle" type="string">
+            <column name="detalle" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
