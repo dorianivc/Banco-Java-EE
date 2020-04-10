@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ include file="Head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
     </head>
     <body>
         <form action="login" method="post">
-            Name:<input type="text" name="name"><br>
+            Cedula:<input type="text" name="cedula"><br>
             Password:<input type="password" name="password"><br>
             <input type="submit" value="login">
         </form>

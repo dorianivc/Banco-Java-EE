@@ -32,13 +32,14 @@ public class new_user extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd= request.getRequestDispatcher("success.jsp");
+       
        
         String nombre=request.getParameter("nombre");
         String apellido=request.getParameter("apellido");
         String password= request.getParameter("password");
         String tipo_usuario=request.getParameter("tipo_usuario");
         String cedula= request.getParameter("cedula");
+        String telefono= request.getParameter("Numero_tel");
         Integer tipo_user= Integer.parseInt(tipo_usuario);
         Usuario usuario = new Usuario();
         usuario.setCedula(cedula);
@@ -48,6 +49,7 @@ public class new_user extends HttpServlet {
             usuario.setNombre(nombre);
         }
         usuario.setPassword(password);
+        usuario.setNumeroTel(telefono);
         usuario.setTipoUsuario(tipo_user);
         try{
             BancoDAO bancoDAO= new BancoDAO();
@@ -56,6 +58,7 @@ public class new_user extends HttpServlet {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
+         RequestDispatcher rd= request.getRequestDispatcher("success.jsp");
         rd.forward(request, response);
     }
 

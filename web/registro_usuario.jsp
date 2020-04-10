@@ -10,13 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ include file="Head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro de Usuarios</title>
     </head>
     <body>
         <h1>Creando Usuario</h1>
         <form action="new_user" method="post">
-        <table>
+        <table class="steelBlueCols">
             <tbody>
                 <tr>
                     <th>Cedula: </th>
@@ -31,6 +32,10 @@
                 <tr>
                     <th>Password: </th>
                     <th><input type="password" name="password"></th>
+                </tr>
+                 <tr>
+                    <th>Numero de Telefono: </th>
+                    <th><input type="text" name="Numero_tel"></th>
                 </tr>
                 <tr>
                     <th> Tipo de Usuario</th>

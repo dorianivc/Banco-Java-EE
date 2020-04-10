@@ -1,7 +1,7 @@
 <%-- 
-    Document   : success
-    Created on : 09/03/2020, 03:48:48 PM
-    Author     : dorianivc
+    Document   : Menu_Cajero_vs_Cliente
+    Created on : 10-abr-2020, 0:48:18
+    Author     : Monica
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,9 +10,9 @@
     <head>
         <%@ include file="Head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Menu_Cajero_vs_Cliente</title>
     </head>
     <body>
-        <h1>Task done successfully!</h1>
+        <h1>Menu_Cajero_vs_Cliente</h1>
     </body>
 </html>

@@ -8,10 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@ include file="Head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>ERROR LOGGING IN!</h1>
+        <h1>GENERIC ERROR!</h1>
     </body>
 </html>

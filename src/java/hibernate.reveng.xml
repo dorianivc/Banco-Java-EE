@@ -40,12 +40,12 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection/>
-  <table-filter match-name="Cliente"/>
+  <schema-selection match-catalog="Banco"/>
   <table-filter match-name="Moneda"/>
   <table-filter match-name="Movimiento"/>
-  <table-filter match-name="Vinculadas"/>
-  <table-filter match-name="Cajero"/>
   <table-filter match-name="Cuenta"/>
   <table-filter match-name="Usuario"/>
+  <table-filter match-name="Cliente"/>
+  <table-filter match-name="Cajero"/>
+  <table-filter match-name="Vinculadas"/>
 </hibernate-reverse-engineering>

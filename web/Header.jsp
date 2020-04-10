@@ -1,5 +1,8 @@
 <%@page import="entidades.Usuario"%>
-<% Usuario usuario=  new Usuario("603","al","pass",1); /* null;*/  %>
+<% 
+    String cedula =request.getParameter("cedula");
+    Usuario usuario=  new Usuario(cedula,"Pedro", "tel","pass",1); /* null;*/  
+%>
 
 <header>
     <div class="logo">
