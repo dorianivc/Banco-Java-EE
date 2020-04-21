@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-abr-2020 1:26:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Cliente" table="Cliente" catalog="Banco" optimistic-lock="version">
+        <id name="idCliente" type="string">
+            <column name="idCliente" length="45" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="entidades.Usuario" fetch="select">
+            <column name="Usuario_cedula" length="15" not-null="true" />
+        </many-to-one>
+        <set name="cuentas" table="Cuenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente_idCliente" length="45" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Cuenta" />
+        </set>
+        <set name="vinculadases" table="Vinculadas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente_idCliente" length="45" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Vinculadas" />
+        </set>
+    </class>
+</hibernate-mapping>
