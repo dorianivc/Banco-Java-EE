@@ -6,6 +6,7 @@
 package data;
 
 
+import entidades.Cajero;
 import entidades.Cliente;
 import entidades.Usuario;
 import java.io.Serializable;
@@ -53,7 +54,26 @@ public class BancoDAO {
         return 0;
     }
      
-
+public void agregarCajero(Cajero cajero)  {
+       try{
+      StringBuilder result = new StringBuilder();
+      URL url = new URL("http://university-testing.azurewebsites.net/api/addCajero?cedula=" + cajero.getIdCajero());
+      System.out.println("http://university-testing.azurewebsites.net/api/addCajero?cedula=" + cajero.getIdCajero());
+      URLConnection conn = url.openConnection();
+      InputStream is = conn.getInputStream();
+      BufferedReader br= new BufferedReader(new InputStreamReader(conn.getInputStream()));
+       String t;
+      String html = null;
+        while((t=br.readLine())!=null) {
+           System.out.println(t);
+        }
+       System.out.println("Insercion de Cajero listo");
+       }catch(Exception se){
+           System.out.println(se.getMessage());
+       }
+           
+           
+    }
    public void agregarCliente(Cliente clientes)  {
        try{
       StringBuilder result = new StringBuilder();

@@ -76,7 +76,7 @@ public class new_user extends HttpServlet {
                     try{
                         BancoDAO bancoDAO= new BancoDAO();
                         bancoDAO.insert(usuario);
-                        bancoDAO.insert(cashier);
+                        bancoDAO.agregarCajero(cashier);
                     }catch(Exception se){
                         System.out.println(se.getMessage());
                     }           break;
@@ -93,8 +93,8 @@ public class new_user extends HttpServlet {
                     try{
                         BancoDAO bancoDAO= new BancoDAO();
                         bancoDAO.insert(usuario);
-                        bancoDAO.insert(cliente);
-                        bancoDAO.insert(cashier);
+                        bancoDAO.agregarCliente(cliente);
+                        bancoDAO.agregarCajero(cashier);
                     }catch(Exception se){
                         System.out.println(se.getMessage());
                     }         break;
