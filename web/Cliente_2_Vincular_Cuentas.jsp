@@ -1,6 +1,6 @@
 <%-- 
-    Document   : tipo_de_cambio
-    Created on : 12/04/2020, 01:34:51 AM
+    Document   : vista_usuario
+    Created on : Apr 20, 2020, 12:08:11 AM
     Author     : leiner.arce
 --%>
 
@@ -11,19 +11,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="Head.jsp" %>
-    <title>Tipo de Cambio</title> 
+    <title> Banco Toma Mi Dinero</title> 
     <link rel="shortcut icon" href="images/logo.png">
 </head>
 <body >
     <!-- Menu Encabezado-->
-    <%@ include file="Header.jsp" %>
+    <%@ include file="Cliente_0_Encabezado.jsp" %>
 
     <div>
-        <H1 >Bienvenido al Banco Toma Mi Dinero <span class="glyphicon glyphicon-briefcase"></span> </H1>
+        <H1 >Bienvenido [Nombre de usuario] <span class="glyphicon glyphicon-briefcase"></span> </H1>
     </div>
     <div>
-        <H1 >La tasa de interés y el tipo de cambio son:</H1>
+        <H1 >Sus cuentas y saldos son:</H1>
             <%
             List lista=null;
             
@@ -36,8 +35,8 @@
                     <thead>
                         <tr>
                             <th>Tipo de Moneda</th>
-                            <th>Tasa de Interés *</th>
-                            <th>Tipo de Cambio **</th>
+                            <th>Numero de Cuenta</th>
+                            <th>Saldo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,8 +61,9 @@
                     }catch(Exception ex){
                     System.out.println(ex.getMessage());
                     }%>
-                <H3>* = Puede variar</H3>
-                <H3>** = En relación al Colon (CRC), puede variar en cualquier momento</H3>
+    </div>
+    <div> 
+        <H1 >Su dinero es nuestro intéres...</H1>
     </div>
 
     <!-- Menu Pie de Pagina-->

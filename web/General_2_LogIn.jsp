@@ -1,18 +1,29 @@
 <%-- 
-    Document   : vista_usuario
-    Created on : Apr 20, 2020, 12:08:11 AM
-    Author     : leiner.arce
+    Document   : Vista_Login
+    Created on : 09/03/2020, 01:27:32 PM
+    Author     : dorianivc
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidades.Usuario"%>
+<%@page import="data.BancoDAO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inicio de Sesion</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="shortcut icon" href="images/logo.png">
+        <script src="js/login.js" type="text/javascript"></script>
     </head>
     <body>
-<%@ include file="Header.jsp" %>
+        
+        <!-- Menu Encabezado-->
+        <%@ include file="General_0_Encabezado.jsp" %>
                 
         <div class="container">
             <div class="row">
@@ -64,6 +75,6 @@
         </div>
         
         <!-- Menu Pie de Pagina-->
-        <%@ include file="Footer.jsp" %>     
+        <%@ include file="Footer.jsp" %>        
     </body>
 </html>

@@ -30,11 +30,10 @@ function goto() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    alert("Usuario logueado de forma correcta");
                     //document.getElementById("enviar").style.display='inline';
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                     // window.location="index_Usuario.jsp";
-                    location.href = "vista_usuario.jsp";
+                    location.href = "Cliente_1_Saldos.jsp";
 
                 } else {
                     if (tipoRespuesta === "E~") {

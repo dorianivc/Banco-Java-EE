@@ -9,7 +9,6 @@
 <html>
 <head>
     <link rel="shortcut icon" href="images/logo.png">
-    <%@ include file="Head.jsp" %>
     <title>Acerca del Banco</title> 
     <link rel="stylesheet" type="text/css" href="css/mapa.css">
     <meta charset="utf-8">
@@ -21,7 +20,7 @@
 </head>
 <body >
     <!-- Menu Encabezado-->
-    <%@ include file="Header.jsp" %>
+    <%@ include file="General_0_Encabezado.jsp" %>
 
     <div>
         <div class="container">

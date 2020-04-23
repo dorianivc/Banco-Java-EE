@@ -2,13 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="Head.jsp" %>
     <title> Banco Toma Mi Dinero</title> 
     <link rel="shortcut icon" href="images/logo.png">
 </head>
 <body >
     <!-- Menu Encabezado-->
-    <%@ include file="Header.jsp" %>
+    <%@ include file="General_0_Encabezado.jsp" %>
 
     <div>
         <H1 >Bienvenido al Banco Toma Mi Dinero <span class="glyphicon glyphicon-briefcase"></span> </H1>
