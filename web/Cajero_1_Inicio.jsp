@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="Head.jsp" %>
     <title> Banco Toma Mi Dinero</title> 
     <link rel="shortcut icon" href="images/logo.png">
 </head>
