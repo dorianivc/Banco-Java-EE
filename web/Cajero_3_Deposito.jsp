@@ -7,11 +7,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<head>
+    <title> Banco Toma Mi Dinero</title> 
+    <link rel="shortcut icon" href="images/logo.png">
+</head>
+<body >
+    <!-- Menu Encabezado-->
+    <%@ include file="Cajero_0_Encabezado.jsp" %>
+
+    <div>
+        <H1 >Bienvenido [Nombre de cajero] <span class="glyphicon glyphicon-briefcase"></span> </H1>
+    </div>
+    <img id="cajero" src="images/cajero.png">
+
+    <!-- Menu Pie de Pagina-->
+    <%@ include file="Footer.jsp" %>
+</body>
 </html>
