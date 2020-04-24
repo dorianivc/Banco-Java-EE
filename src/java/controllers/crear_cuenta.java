@@ -10,6 +10,7 @@ import entidades.Cliente;
 import entidades.Cuenta;
 import entidades.Moneda;
 import entidades.Usuario;
+import entidades.Vinculadas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -96,6 +97,14 @@ public class crear_cuenta extends HttpServlet {
       cuenta.setSaldo(0);
       cuenta.setLimiteTransferencia(Integer.parseInt(limite_transferencia));
       bancoDao.insert(cuenta);
+      Integer num_vinculacion = (int) (Math.random() * (max - min + 1) + min);
+      Vinculadas cuenta_vinculada= new Vinculadas();
+      cuenta_vinculada.setVinId(num_vinculacion.toString());
+      cuenta_vinculada.setCuenta(cuenta);
+      cuenta_vinculada.setCliente(aux);
+      Byte es_owner=1;
+      cuenta_vinculada.setOwner(es_owner);
+      bancoDao.insert(cuenta_vinculada);
       RequestDispatcher rd= request.getRequestDispatcher("success.jsp");
       rd.forward(request, response);
       }else{//SI EL USUARIO NO EXISTE, SE CREA EN EL REGISTRO
