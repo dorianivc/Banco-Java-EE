@@ -5,6 +5,7 @@
  */
 package data;
 
+import entidades.Cuenta;
 import entidades.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,7 @@ public class NewMain {
      */
     public static void main(String[] args) {
        
-        BancoDAO bancoDAO = new BancoDAO();
-        ArrayList<Object> lista= bancoDAO.list(new Usuario());
-        lista.forEach(System.out::println);
+        
     }
     
 }

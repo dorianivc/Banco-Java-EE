@@ -12,6 +12,14 @@
         <servlet-name>crear_cuenta</servlet-name>
         <servlet-class>controllers.crear_cuenta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>vincular_cuenta</servlet-name>
+        <servlet-class>controllers.vincular_cuenta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deposito</servlet-name>
+        <servlet-class>controllers.deposito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>new_user</servlet-name>
         <url-pattern>/new_user</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>crear_cuenta</servlet-name>
         <url-pattern>/crear_cuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vincular_cuenta</servlet-name>
+        <url-pattern>/vincular_cuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deposito</servlet-name>
+        <url-pattern>/deposito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -14,10 +14,10 @@ def save_events(event):
    
     """
     saldo=event['saldo']
-    num_cuenta=['num_cuenta']
+    ID=event['id']
     conn = pymysql.connect(rds_host, user=name, passwd=password, db=db_name, connect_timeout=5)
     with conn.cursor() as cur:
-        cur.execute(f""" update Banco.Cuenta set saldo='{saldo}' where num_cuenta='{num_cuenta}'""" )
+        cur.execute(f""" update Banco.Cuenta set saldo='{saldo}' where Cliente_idCliente='{ID}'""" )
         conn.commit()
         cur.close()
        

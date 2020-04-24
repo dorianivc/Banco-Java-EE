@@ -30,14 +30,31 @@ import java.net.URL;
 import org.json.JSONObject;
 import java.io.*;
 import java.net.*;
+import org.hibernate.HibernateException;
 
 
 public class BancoDAO {
     
-    static Session session=null;
+    public Session session=null;
     public BaseDatosAWS db= new BaseDatosAWS();
 
     public BancoDAO() {
+    }
+
+    public  Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        session = session;
+    }
+
+    public BaseDatosAWS getDb() {
+        return db;
+    }
+
+    public void setDb(BaseDatosAWS db) {
+        this.db = db;
     }
     
     
@@ -134,6 +151,27 @@ public void agregarCajero(Cajero cajero)  {
         tx.commit();
         session.close();
     }
+     public void insert_deposito(Object user){
+         Transaction tx = null;
+         try{
+        session=HibernateUtil.getSessionFactory().openSession();
+        
+        tx =session.beginTransaction();
+        session.update(user);
+        tx.commit();
+        session.close(); 
+         }catch (HibernateException e) {
+         if (tx!=null){
+             tx.rollback();
+             e.printStackTrace(); 
+         }
+         
+      }finally {
+         session.close(); 
+      }
+         }
+       
+    
      public void delete(Object user){
         session=HibernateUtil.getSessionFactory().openSession();
         Transaction tx =session.beginTransaction();
@@ -141,7 +179,10 @@ public void agregarCajero(Cajero cajero)  {
         tx.commit();
         session.close();
     }
-     public static void update(Object user){
+    public void close_session(){
+        HibernateUtil.getSessionFactory().close();
+    }
+     public void update(Object user){
         session=HibernateUtil.getSessionFactory().openSession();
         Transaction tx =session.beginTransaction();
         session.update(user);
