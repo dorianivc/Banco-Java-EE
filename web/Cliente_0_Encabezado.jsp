@@ -6,12 +6,6 @@
         usuario = (Usuario) sesion.getAttribute("usuario");
     }
 %>
-    <script>
-        function LogOut(){
-            //Llamar al Servlet LogOut
-            location.href="General_1_Inicio";
-        }
-    </script>
     
     <link href="css/menu.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -27,10 +21,10 @@
     <!-- Encbezado Menu -->
     <div class="menu">
         <ul> 
-            <li><a onclick="LogOut()">                      Salir               </a></li>
             <li><a href="Cliente_1_Saldos.jsp">             Saldos              </a></li>
             <li><a href="Cliente_2_Vincular_Cuentas.jsp">   Vincular Cuentas    </a></li> 
             <li><a href="Cliente_3_Tranferencias.jsp">      Tranferencias       </a></li>                 
+            <li><a href="Cliente_4_Salir.jsp">              Salir               </a></li>
         </ul>
     </div>
 </header>          

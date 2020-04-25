@@ -43,7 +43,6 @@ public class login extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             List lista = null;
-            List lista2 = null;
             try{
                 BancoDAO bancoDao= new BancoDAO();
                 Usuario user = new Usuario();

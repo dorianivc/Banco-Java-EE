@@ -28,12 +28,13 @@
     <!-- Encbezado Menu -->
     <div class="menu">
         <ul> 
-            <li><a onclick="LogOut()">                  Salir               </a></li>
             <li><a href="Cajero_2_Abrir_Cuenta.jsp">    Abrir Cuenta        </a></li>
             <li><a href="Cajero_3_Deposito.jsp">        Deposito            </a></li> 
             <li><a href="Cajero_4_Retiro.jsp">          Retiro              </a></li>   
             <li><a href="Cajero_5_Tranferencia.jsp">    Tranferencia        </a></li>   
             <li><a href="Cajero_6_Acreditar.jsp">       Acreditar           </a></li>              
+            <li><a href="Cajero_7_Salir.jsp">           Salir               </a></li>              
         </ul>
     </div>
 </header>          
+    

@@ -4,6 +4,9 @@
     Author     : leiner.arce
 --%>
 
+<%@page import="entidades.Vinculadas"%>
+<%@page import="entidades.Cuenta"%>
+<% Usuario user = (Usuario) session.getAttribute("usuario");%>
 <%@page import="entidades.Moneda"%>
 <%@page import="data.BancoDAO"%>
 <%@page import="java.util.List"%>
@@ -19,17 +22,19 @@
     <%@ include file="Cliente_0_Encabezado.jsp" %>
 
     <div>
-        <H1 >Bienvenido [Nombre de usuario] <span class="glyphicon glyphicon-briefcase"></span> </H1>
+        <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %></H1>
     </div>
     <div>
-        <H1 >Sus cuentas y saldos son:</H1>
+        <H1 >Sus cuentas vinculadas:</H1>
             <%
             List lista=null;
             
             try{
                 BancoDAO bancoDao= new BancoDAO();
                 Moneda mon = new Moneda();
-                lista=bancoDao.list(mon);
+                lista=bancoDao.cuentasVinculas(user.getCedula());
+                Vinculadas vin = new Vinculadas();
+                vin.getCuenta();
             %>
                 <table class="greenTable2" id="Moneda">
                     <thead>
@@ -42,10 +47,11 @@
                     <tbody>
                         <tr><%
                             for(Integer i=0;i<lista.size();i++){
+                                vin = (Vinculadas)lista.get(i);
                                 mon=(Moneda)lista.get(i);
                                 String tipo=null;
                                 switch(mon.getIdMoneda()){
-                                    case 1:tipo="Colon";break;
+                                    case 1: tipo="Colon";break;
                                     case 2: tipo="Dolar";break;
                                     case 3: tipo="Euro";break;
                                     default: tipo="Error Retrieving Data";break;

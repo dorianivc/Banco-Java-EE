@@ -22,8 +22,7 @@
     <%@ include file="Cliente_0_Encabezado.jsp" %>
 
     <div>
-        <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %>
-        </H1>
+        <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %></H1>
     </div>
     <div>
         <H1 >Sus cuentas y saldos son:</H1>
