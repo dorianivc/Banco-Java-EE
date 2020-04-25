@@ -31,6 +31,7 @@ import java.net.URL;
 import org.json.JSONObject;
 import java.io.*;
 import java.net.*;
+import javax.xml.registry.infomodel.User;
 import org.hibernate.HibernateException;
 
 
@@ -162,9 +163,18 @@ public void agregarCajero(Cajero cajero)  {
      ArrayList<Object> lista= (ArrayList<Object>) query.list();
      tx.commit();
      return lista;
-     
- 
     }
+    
+    public ArrayList <User> buscarUsuario(String cedula){
+     session=HibernateUtil.getSessionFactory().openSession();
+     Transaction tx =session.beginTransaction();
+     String HQL="from Usuario where cedula = '" + cedula + "'";
+     Query query= session.createQuery(HQL);
+     ArrayList<User> lista= (ArrayList<User>) query.list();
+     tx.commit();
+     return lista;
+    }
+    
     public void insert(Object user){
         session=HibernateUtil.getSessionFactory().openSession();
         Transaction tx =session.beginTransaction();

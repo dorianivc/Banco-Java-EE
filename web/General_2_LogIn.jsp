@@ -32,17 +32,19 @@
                     <h1 id="texto">Banco Toma Mi Dinero</h1>
                     <img id="logo" src="images/tmd.jpg" class="img-rounded">
                     <div class="form">
-                        <div>
-                            <div class="form-group" id="groupUsario">
-                                <label for="cedula">Cedula:</label>
-                                <input type="text" class="form-control" id="cedula">
+                        <form action="login" method="post">
+                            <div>
+                                <div class="form-group" id="groupUsario">
+                                    <label for="cedula">Cedula:</label>
+                                    <input type="text" class="form-control" id="cedula" name="cedula">
+                                </div>
+                                <div class="form-group" id="groupPassword">
+                                    <label for="contraseña">Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <button type="submit" class="btn btn-default" onClick="goto()" id="showInfo">Acceder</button>
                             </div>
-                            <div class="form-group" id="groupPassword">
-                                <label for="contraseña">Contraseña:</label>
-                                <input type="password" class="form-control" id="contraseña">
-                            </div>
-                            <button type="submit" class="btn btn-default" onClick="goto()" id="showInfo">Acceder</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-4"> </div>

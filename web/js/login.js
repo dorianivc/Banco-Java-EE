@@ -1,56 +1,10 @@
 // Banco TMD
 // Progra I Ciclo, 2020
 
-$(document).ready(function () {
-    $('body').on('keyup', function (evt) {
-        if (evt.keyCode == 13) {
-            goto();
-
-        }
-    });
-});
 
 function goto() {
-    mostrarModalValidando();
     if (validar() === true) {
-        cedula = $("#cedula").val();
-        contraseña = $("#contraseña").val();
-        cedula = cedula.toString();
-        //Se envia la información por ajax
-        $.ajax({
-            url: 'login',
-            data: {
-                cedula: cedula,
-                password: contraseña
-            },
-            error: function () { //si existe un error en la respuesta del ajax
-                mostrarModalErrorAdmin();
-            },
-            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-                var respuestaTxt = data.substring(2);
-                var tipoRespuesta = data.substring(0, 2);
-                if (tipoRespuesta === "C~") {
-                    //document.getElementById("enviar").style.display='inline';
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    // window.location="index_Usuario.jsp";
-                    location.href = "Cliente_1_Saldos.jsp";
-
-                } else {
-                    if (tipoRespuesta === "E~") {
-                        mostrarModalErrorValidacion();
-                    } else {
-                        mostrarModalErrorAdmin();
-                    }
-                }
-
-            },
-            dataType: "text",
-            type: 'POST'
-        });
-    } else {
-        mostrarModalErrorFaltaDatos();
-    }
-
+        mostrarModalValidando();}
 }
 
 function validar() {
@@ -103,6 +57,7 @@ function mostrarModalErrorValidacion() {
 function mostrarModalValidando() {
     $('#infoModal').modal();
     document.getElementById("mensaje_error").innerHTML = "Validando la información por favor espere";
+    document.getElementById("mensaje_error").style.color = "blue";
 }
 
 function mostrarMensaje(classCss, msg, neg) {

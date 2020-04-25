@@ -4,9 +4,12 @@
     Author     : leiner.arce
 --%>
 
+<%@page import="entidades.Cuenta"%>
 <%@page import="entidades.Moneda"%>
 <%@page import="data.BancoDAO"%>
 <%@page import="java.util.List"%>
+<% Usuario user = (Usuario) session.getAttribute("usuario");%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +22,8 @@
     <%@ include file="Cliente_0_Encabezado.jsp" %>
 
     <div>
-        <H1 >Bienvenido [Nombre de usuario] <span class="glyphicon glyphicon-briefcase"></span> </H1>
+        <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %>
+        </H1>
     </div>
     <div>
         <H1 >Sus cuentas y saldos son:</H1>
@@ -28,8 +32,8 @@
             
             try{
                 BancoDAO bancoDao= new BancoDAO();
-                Moneda mon = new Moneda();
-                lista=bancoDao.list(mon);
+                Cuenta con = new Cuenta();
+                lista = bancoDao.list(con);
             %>
                 <table class="greenTable2" id="Moneda">
                     <thead>
@@ -42,17 +46,19 @@
                     <tbody>
                         <tr><%
                             for(Integer i=0;i<lista.size();i++){
-                                mon=(Moneda)lista.get(i);
-                                String tipo=null;
-                                switch(mon.getIdMoneda()){
-                                    case 1:tipo="Colon";break;
-                                    case 2: tipo="Dolar";break;
-                                    case 3: tipo="Euro";break;
-                                    default: tipo="Error Retrieving Data";break;
-                            }%>
-                            <td><%=tipo%></td>
-                            <td><%=mon.getTasaDeInteres()%></td>
-                            <td><%=mon.getTipoDeCambio()%></td>
+                                con=(Cuenta)lista.get(i);
+                                if(user.getCedula().equals(con.getCliente().getIdCliente())){
+                                    String tipo=null;
+                                    switch(con.getMoneda().getIdMoneda()){
+                                        case 1:tipo="Colon";break;
+                                        case 2: tipo="Dolar";break;
+                                        case 3: tipo="Euro";break;
+                                        default: tipo="Error Retrieving Data";break;
+                                    }%>
+                                    <td><%=tipo%></td>
+                                    <td><%= con.getNumCuenta() %></td>
+                                    <td><%= con.getSaldo() %></td>
+                                <%}%>
                        </tr>    
                             <%}%>
                     </tbody>
@@ -61,9 +67,6 @@
                     }catch(Exception ex){
                     System.out.println(ex.getMessage());
                     }%>
-    </div>
-    <div> 
-        <H1 >Su dinero es nuestro intéres...</H1>
     </div>
 
     <!-- Menu Pie de Pagina-->
