@@ -85,7 +85,7 @@ public void modificar_monto(Cuenta cuenta, Float saldo){
         while((t=br.readLine())!=null) {
            System.out.println(t);
         }
-       System.out.println("Insercion de Cajero listo");
+       System.out.println("Modificacion de montos listos");
        }catch(IOException se){
            System.out.println(se.getMessage());
        }
@@ -161,7 +161,7 @@ public void agregarCajero(Cajero cajero)  {
      Query query= session.createQuery(HQL);
      ArrayList<Object> lista= (ArrayList<Object>) query.list();
      tx.commit();
-        return lista;
+     return lista;
      
  
     }
