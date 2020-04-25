@@ -8,6 +8,7 @@ package data;
 
 import entidades.Cajero;
 import entidades.Cliente;
+import entidades.Cuenta;
 import entidades.Usuario;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -70,6 +71,26 @@ public class BancoDAO {
         }
         return 0;
     }
+    
+public void modificar_monto(Cuenta cuenta, Float saldo){
+    try{
+      StringBuilder result = new StringBuilder();
+      URL url = new URL("http://university-testing.azurewebsites.net/api/modify_account?num_cuenta=" + cuenta.getNumCuenta()+"&saldo="+saldo.toString());
+      System.out.println("http://university-testing.azurewebsites.net/api/modify_account?num_cuenta=" + cuenta.getNumCuenta()+"&saldo="+saldo.toString());
+      URLConnection conn = url.openConnection();
+      InputStream is = conn.getInputStream();
+      BufferedReader br= new BufferedReader(new InputStreamReader(conn.getInputStream()));
+       String t;
+      String html = null;
+        while((t=br.readLine())!=null) {
+           System.out.println(t);
+        }
+       System.out.println("Insercion de Cajero listo");
+       }catch(IOException se){
+           System.out.println(se.getMessage());
+       }
+           
+}
      
 public void agregarCajero(Cajero cajero)  {
        try{

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllers;
 
 import data.BancoDAO;
@@ -25,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Monica
  */
-public class deposito extends HttpServlet {
+public class retiro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,12 +38,12 @@ public class deposito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String monto_str=  request.getParameter("monto_a_depositar");
+        String monto_str=  request.getParameter("monto_a_retirar");
         System.out.println("Monto: "+ monto_str);
         float monto=Float.parseFloat(monto_str);
         String num_cuenta= request.getParameter("numero_cuenta");
         System.out.println("Numero de cuenta: "+ num_cuenta);
-        String detalle= request.getParameter("detalle");
+        String detalle= "Retiro de fondos del usuario";
         Movimiento deposito = new Movimiento();
         BancoDAO bancoDAO= new BancoDAO();
         List cuentas=bancoDAO.list(new Cuenta());
@@ -58,9 +54,8 @@ public class deposito extends HttpServlet {
             cuenta=(Cuenta) cuentas.get(i);
             if(cuenta.getNumCuenta() == null ? num_cuenta == null : cuenta.getNumCuenta().equals(num_cuenta)){
                 cuenta=(Cuenta) cuentas.get(i);
-                cuenta.setSaldo(cuenta.getSaldo()+monto);
-              
-               
+                if(monto<=cuenta.getSaldo() && monto<=cuenta.getLimiteTransferencia()){
+                cuenta.setSaldo(cuenta.getSaldo()-monto);
                 deposito.setCuenta(cuenta);
                 deposito.setDetalle(detalle);
                 deposito.setMonto(monto);
@@ -70,6 +65,8 @@ public class deposito extends HttpServlet {
                 bancoDAO.insert(deposito);
                 pass=true;
                 i=2*cuentas.size();
+                }
+                
             }
             
           }
