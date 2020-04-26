@@ -28,6 +28,10 @@
         <servlet-name>transferencia</servlet-name>
         <servlet-class>controllers.transferencia</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>acredtar_intereses</servlet-name>
+        <servlet-class>controllers.acredtar_intereses</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>new_user</servlet-name>
         <url-pattern>/new_user</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>transferencia</servlet-name>
         <url-pattern>/transferencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>acredtar_intereses</servlet-name>
+        <url-pattern>/acredtar_intereses</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
