@@ -4,6 +4,7 @@
     Author     : leiner.arce
 --%>
 
+<% Usuario user = (Usuario) session.getAttribute("usuario");%>
 <%@page import="entidades.Moneda"%>
 <%@page import="data.BancoDAO"%>
 <%@page import="java.util.List"%>
@@ -19,7 +20,7 @@
     <%@ include file="Cajero_0_Encabezado.jsp" %>
 
     <div>
-        <H1 >Bienvenido [Nombre de cajero] <span class="glyphicon glyphicon-briefcase"></span> </H1>
+        <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %></H1>
     </div>
     <img id="cajero" src="images/cajero.png">
 

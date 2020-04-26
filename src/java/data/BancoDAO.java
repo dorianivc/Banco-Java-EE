@@ -186,6 +186,16 @@ public void agregarCajero(Cajero cajero)  {
         return lista;
     }
     
+    public ArrayList <Cuenta> buscarCuenta(String numero_cuenta){
+        session=HibernateUtil.getSessionFactory().openSession();
+        Transaction tx =session.beginTransaction();
+        String HQL="SELECT * FROM Cuenta where num_Cuenta = '" + numero_cuenta + "'";
+        Query query= session.createQuery(HQL);
+        ArrayList<Cuenta> lista= (ArrayList<Cuenta>) query.list();
+        tx.commit();
+        return lista;
+    }
+    
     public void insert(Object user){
         session=HibernateUtil.getSessionFactory().openSession();
         Transaction tx =session.beginTransaction();

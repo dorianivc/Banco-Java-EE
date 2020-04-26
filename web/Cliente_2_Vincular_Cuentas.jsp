@@ -24,7 +24,7 @@
     <div>
         <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %></H1>
     </div>
-    <div>
+    
         <H1 >Sus cuentas vinculadas:</H1>
             <%
             List lista=null;
@@ -35,6 +35,7 @@
                 lista=bancoDao.cuentasVinculas(user.getCedula());
                 Vinculadas vin = new Vinculadas();
                 vin.getCuenta();
+                
             %>
 
             Digite el numero de cedula del propietario de la cuenta a agregar:
@@ -48,11 +49,12 @@
                         <button type="submit" class="btn btn-default">Acceder</button>
                     </div>
                 </form>
-            </div>            
+            </div>           
+            
             <br><br>
             Cantidad de cuentas vinculadas: <%= lista.size() %>
             <br><br>
-                <table class="greenTable2" id="Moneda">
+                <table class="greenTable2" id="Vinculadas">
                     <thead>
                         <tr>
                             <th>Numero de Cuenta</th>
@@ -60,14 +62,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><%
-                            for(Integer i=0;i<lista.size();i++){
+                        <tr>
+                            
+                            <%
+                            for(Integer i=0; i<lista.size(); i++){
                                 vin = (Vinculadas)lista.get(i);
-                                mon=(Moneda)lista.get(i);%>
-                                
-                            <td><%=vin.getCuenta().getNumCuenta().toString() %></td>
-                            <td><%=vin.getCliente().getUsuario().getNombre().toString() %></td>
-                       </tr>    
+                                %>                                
+                            <td> <%=vin.getCuenta().getNumCuenta() %></td>
+                            <td> <%=vin.getCuenta().getCliente().getUsuario().getNombre() %></td>
+                        </tr>    
                             <%}%>
                     </tbody>
                     </table>
@@ -75,7 +78,7 @@
                     }catch(Exception ex){
                     System.out.println(ex.getMessage());
                     }%>
-    </div>
+    
 
     <!-- Menu Pie de Pagina-->
     <%@ include file="Footer.jsp" %>
