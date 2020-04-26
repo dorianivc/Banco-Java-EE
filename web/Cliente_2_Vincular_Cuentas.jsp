@@ -36,29 +36,37 @@
                 Vinculadas vin = new Vinculadas();
                 vin.getCuenta();
             %>
+
+            Digite el numero de cedula del propietario de la cuenta a agregar:
+            <div class="form">
+                <form action="vincular_cuenta" method="post">
+                    <div>
+                        <div class="form-group" id="groupUsario">
+                            <label for="cedula">Cedula:</label>
+                            <input type="text" class="form-control" id="cedula" name="cedula">
+                        </div>
+                        <button type="submit" class="btn btn-default">Acceder</button>
+                    </div>
+                </form>
+            </div>            
+            <br><br>
+            Cantidad de cuentas vinculadas: <%= lista.size() %>
+            <br><br>
                 <table class="greenTable2" id="Moneda">
                     <thead>
                         <tr>
-                            <th>Tipo de Moneda</th>
                             <th>Numero de Cuenta</th>
-                            <th>Saldo</th>
+                            <th>Propietario</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr><%
                             for(Integer i=0;i<lista.size();i++){
                                 vin = (Vinculadas)lista.get(i);
-                                mon=(Moneda)lista.get(i);
-                                String tipo=null;
-                                switch(mon.getIdMoneda()){
-                                    case 1: tipo="Colon";break;
-                                    case 2: tipo="Dolar";break;
-                                    case 3: tipo="Euro";break;
-                                    default: tipo="Error Retrieving Data";break;
-                            }%>
-                            <td><%=tipo%></td>
-                            <td><%=mon.getTasaDeInteres()%></td>
-                            <td><%=mon.getTipoDeCambio()%></td>
+                                mon=(Moneda)lista.get(i);%>
+                                
+                            <td><%=vin.getCuenta().getNumCuenta().toString() %></td>
+                            <td><%=vin.getCliente().getUsuario().getNombre().toString() %></td>
                        </tr>    
                             <%}%>
                     </tbody>
@@ -67,9 +75,6 @@
                     }catch(Exception ex){
                     System.out.println(ex.getMessage());
                     }%>
-    </div>
-    <div> 
-        <H1 >Su dinero es nuestro intéres...</H1>
     </div>
 
     <!-- Menu Pie de Pagina-->

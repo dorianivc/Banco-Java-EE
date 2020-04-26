@@ -25,20 +25,12 @@
         <H1 >Bienvenido <%= user.getNombre() %> - <%= user.getCedula() %></H1>
     </div>
     <div class="form">
+        <h3> Seguro que desea salir? </h3>
         <form action="logout" method="post">
-            <div>
-                <div class="form-group" id="groupUsario">
-                    <label for="cedula">Cedula:</label>
-                    <input type="text" class="form-control" id="cedula" name="cedula">
-                </div>
-                <div class="form-group" id="groupPassword">
-                    <label for="contraseña">Contraseña:</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <button type="submit" class="btn btn-default">Si</button>
-                <button onclick="location.href='Cliente_1_Saldos.jsp'" class="btn btn-default">No</button>
-            </div>
+            <button type="submit" class="btn btn-default">Si</button>
         </form>
+            <button onclick="location.href='Cliente_1_Saldos.jsp'" class="btn btn-default">No</button>
+        
     </div>
 
     <!-- Menu Pie de Pagina-->
