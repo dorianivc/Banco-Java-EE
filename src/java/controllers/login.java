@@ -33,18 +33,42 @@ public class login extends HttpServlet {
      */
   
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String cedula = request.getParameter("cedula");
+        String password = request.getParameter("password");
+        
         boolean respuesta;
         try (PrintWriter out = response.getWriter()) {
-            String cedula = request.getParameter("cedula");
-            String password = request.getParameter("password");
-            System.out.println(cedula);
+            
             List lista = null;
             try{
                 BancoDAO bancoDao= new BancoDAO();
                 Usuario user = new Usuario();
-                lista=bancoDao.list(user);
-                respuesta = false;
+                lista=bancoDao.buscarUsuario(cedula);
+                if (lista.size() == 1){
+                    user = (Usuario)lista.get(0);   
+                    if( user.getPassword().equals(password) ){
+                        int tipo = user.getTipoUsuario();
+                        HttpSession s = request.getSession(true);
+                        switch (tipo) {
+                                case 0:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Cliente_1_Saldos.jsp").forward(request, response);
+                                case 1:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Cajero_1_Inicio.jsp").forward(request, response);
+                                case 2:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Menu_Cajero_vs_Cliente.jsp").forward(request, response);
+                            }
+                    }
+                } else {
+                    request.getRequestDispatcher("General_2_Login_Error.jsp").forward(request, response);
+                }
+                        
+                        
                 for(Integer i=0;i<lista.size();i++){
                     //recorremos la lista
                     user=(Usuario)lista.get(i);   
@@ -53,64 +77,28 @@ public class login extends HttpServlet {
                         if( user.getPassword().equals(password) ){
                             
                             //Usuario Logueado de forma exitosa
-                            respuesta = true;
-                            session.setAttribute("usuario", user);
-                            out.print("C~Validación correcta... espere esta siendo redireccionado");
-                            break;
+                            int tipo = user.getTipoUsuario();
+                            HttpSession s = request.getSession(true);
+                            
+                            switch (tipo) {
+                                case 0:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Cliente_1_Saldos.jsp").forward(request, response);
+                                case 1:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Cajero_1_Inicio.jsp").forward(request, response);
+                                case 2:
+                                    s.setAttribute("usuario", user);
+                                    request.getRequestDispatcher("Menu_Cajero_vs_Cliente.jsp").forward(request, response);
+                            }
                             }//preguntamos si la contraseña ingresada es igual a alguna de la base de datos                
                         }//preguntamos si la cedula ingresada es igual a alguna de la base de datos
                 }// fin for recorrer lista
-                
-                if( respuesta == false ){
-                    out.print("E~Usuario o contraseña invalidos");
-                } 
-                    
+
             }catch(Exception ex){
             System.out.println(ex.getMessage());
             } 
-        
-        
-        /*
-        int result= -1;
-        try{
-            result=banco.authUser(user);
-        }catch(Exception se){
-            System.out.println(se.getMessage());
-            result=-1;
-        }
-        
-        switch (result) {
-            case -1:
-                {
-                    RequestDispatcher rd= request.getRequestDispatcher("error.jsp");
-                    rd.forward(request, response);
-                    break;
-                }
-            case 0:
-                {
-                    RequestDispatcher rd= request.getRequestDispatcher("Index.jsp?cedula="+user.getCedula());
-                    rd.forward(request, response);
-                    break; 
-                }
-            case 1:
-                {
-                    RequestDispatcher rd= request.getRequestDispatcher("Listar_Usuarios.jsp");
-                    rd.forward(request, response);
-                    break;
-                }
-            case 2:
-                {
-                    RequestDispatcher rd= request.getRequestDispatcher("Menu_Cajero_vs_Cliente.jsp");
-                    rd.forward(request, response);
-                    break;
-                }
-            default:
-                break;
-        }
-        }*/
     
     }
-    }
 }
-
-  
+}

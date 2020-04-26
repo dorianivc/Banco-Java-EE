@@ -10,6 +10,7 @@ import entidades.Cajero;
 import entidades.Cliente;
 import entidades.Cuenta;
 import entidades.Usuario;
+import entidades.Vinculadas;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,6 +32,7 @@ import java.net.URL;
 import org.json.JSONObject;
 import java.io.*;
 import java.net.*;
+import javax.xml.registry.infomodel.User;
 import org.hibernate.HibernateException;
 
 
@@ -162,9 +164,28 @@ public void agregarCajero(Cajero cajero)  {
      ArrayList<Object> lista= (ArrayList<Object>) query.list();
      tx.commit();
      return lista;
-     
- 
     }
+    
+    public ArrayList <User> buscarUsuario(String cedula){
+        session=HibernateUtil.getSessionFactory().openSession();
+        Transaction tx =session.beginTransaction();
+        String HQL="from Usuario where cedula = '" + cedula + "'";
+        Query query= session.createQuery(HQL);
+        ArrayList<User> lista= (ArrayList<User>) query.list();
+        tx.commit();
+        return lista;
+    }
+    
+    public ArrayList <Vinculadas> cuentasVinculas(String cedula){
+        session=HibernateUtil.getSessionFactory().openSession();
+        Transaction tx =session.beginTransaction();
+        String HQL="from Vinculadas where Cliente_idCliente ='" + cedula + "'";
+        Query query= session.createQuery(HQL);
+        ArrayList<Vinculadas> lista= (ArrayList<Vinculadas>) query.list();
+        tx.commit();
+        return lista;
+    }
+    
     public void insert(Object user){
         session=HibernateUtil.getSessionFactory().openSession();
         Transaction tx =session.beginTransaction();
